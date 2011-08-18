@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta name="robots" content="all" />
+		<meta name="author" content="bonjour.shen@gmail.com, shen" />
+
+        <title>Hello World~~</title>
+        <link rel="stylesheet" media="all" type="text/css" href="css/common.css" />
+
+        <script type="text/javascript" src="script/sf/starfish-all.js"></script>
+
+        <script type="text/javascript">
+            mxBasePath = './mxGraph';
+        </script>
+
+        <script type="text/javascript" src="script/3rdpart/mxClient-1.7.1.6.js"></script>
+
+        <script type="text/javascript">
+            function main(container) {
+                if (!mxClient.isBrowserSupported()) {
+                    mxUtils.error('Browser is not supported!', 200, false);
+                } else {
+                    mxGraphHandler.prototype.guidesEnabled = true;
+                    mxConstants.GUIDE_COLOR = '#FF0000';
+                    mxConstants.GUIDE_STROKEWIDTH = 1;
+
+                    mxRectangleShape.prototype.crisp = true;
+
+                    var graph = new mxGraph(container);
+
+                    new mxRubberband(graph);
+
+                    var parent = graph.getDefaultParent();
+
+                    graph.getModel().beginUpdate();
+                    try {
+                        var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30, 'ROUNDED');
+                        var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30, 'strokeColor=red;fillColor=green');
+                        var e1 = graph.insertEdge(parent, null, '', v1, v2);
+                    } finally {
+                        graph.getModel().endUpdate();
+                    }
+                }
+            }
+
+            window.onload = function() {
+                main(document.getElementById('graphContainer'));
+            };
+        </script>
+    </head>
+    <body>
+        <div id="graphContainer"
+             style="overflow:hidden;width:321px;height:241px;background:url('images/grid.gif');cursor:default;">
+        </div>
+    </body>
+</html>

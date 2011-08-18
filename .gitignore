@@ -1,0 +1,8 @@
+.idea/
+out/
+owl.iml
+web/WEB-INF/applicationContext.xml
+web/WEB-INF/classes/
+web/mxGraph/images/
+web/script/3rdParty/compile/
+web/test/
