@@ -1,3 +1,258 @@
-// ../dist/gg/starfish_only.js
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('q 9;7(9){7(A 9!="z")H C D("\\E\'9\'\\I\\L\\N\\M,\\Q\\Y\\W\\V\\R\\17\\15\\19!")}l 9={};7(9.g){7(A 9.g!="z")H C D("\\E\'9.g\'\\I\\L\\N\\M,\\Q\\Y\\W\\V\\R\\17\\15\\19!")}l 9.g={};7(9.g.B)H C D("\\E\'9.g.B\'\\I\\L\\N\\M");9.g.B={1B:"g 1E",1D:"1Q.g@1P.1S",1R:"g 1O 1L",1K:"1N.1M.10",1a:"0.8.1o",1n:"1p.1r.16"};q 11=9.g.B,13=m(a){q b;r((b=A a)=="z"?a==v&&"v"||1l.14.1s.Z(a).12(8,-1):b).1y()},$=m(a){r A a!="z"?O.1z(a):a},$$=m(a,b){r(a||O).1u(b)},$n=m(a,b){r(a||O).1w(b)},1v=m(a,b){q c=G.2g;7(13(a)=="m"){q d=2f.14.12.Z(2c,2);r c(m(){a.2b(v,d)},b)}r c(a,b)};11.2d=m(){q a={u:0,X:0,w:0,T:0,o:0,4:v},b={u:0,U:0,P:0,o:0,18:0,F:0,4:v},c={k:h,1j:h,1k:h,J:h,K:h,1c:h,1f:h,1g:h,1e:h,1d:h},d=1b.2l;7(G.o){a.4=b.4=G.o.1a();a.o=b.o=p(a.4)}l 7(/2m\\/(\\S+)/.j(d)){a.4=f.$1;a.w=p(a.4);7(/1Z\\/(\\S+)/.j(d)){b.4=f.$1;b.18=p(b.4)}l 7(/21\\/(\\S+)/.j(d)){b.4=f.$1;b.F=p(b.4)}l{q e=1;e=a.w<20?1:a.w<1X?1.2:a.w<1T?1.3:2;b.F=b.4=e}}l 7(/1V\\/(\\S+)/.j(d)||/28\\/([^;]+)/.j(d)){a.4=b.4=f.$1;a.T=b.P=p(a.4)}l 7(/2a:([^\\)]+)\\) 29\\/\\d{8}/.j(d)){a.4=f.$1;a.X=p(a.4);7(/26\\/(\\S+)/.j(d)){b.4=f.$1;b.U=p(b.4)}}l 7(/22 ([^;]+)/.j(d)){a.4=b.4=f.$1;a.u=b.u=p(a.4)}b.u=a.u;b.o=a.o;e=1b.24;c.k=e.t("1h")==0;c.1j=e.t("25")==0;c.1k=e=="23"||e.t("27")==0;7(c.k)7(/1h(?:1W )?([^1U]{2})\\s?(\\d+\\.\\d+)?/.j(d))7(f.$1=="1i")1Y(f.$2){y"5.0":c.k="2k";x;y"5.1":c.k="2j";x;y"6.0":c.k="2e";x;y"6.1":c.k="2h";x;2i:c.k="1i";x}l c.k=f.$1=="1t"?"1A":f.$1;c.J=d.t("1x")>-1;c.K=d.t("1m")>-1;c.1c=d.t("1q")>-1;c.1f=c.k=="1C";c.1g=c.J||c.K;c.1e=d.t("1F")>-1;c.1d=/1I/i.j(d);r{1J:a,1G:b,1H:c}}();',62,147,'||||ver|||if||org||||||RegExp|shen|false||test|win|else|function||opera|parseFloat|var|return||indexOf|ie|null|webkit|break|case|object|typeof|Starfish|new|Error|u5305|safari|window|throw|u5df2|iphone|ipod|u7ecf|u5728|u5b58|document|konq|u5e76|u4e00||khtml|firefox|u662f|u4e0d|gecko|u4e14|call||starfish|slice|type|prototype|u5bf9||u4e2a|chrome|u8c61|version|navigator|nokiaN|ps|wii|winMobile|macMobile|Win|NT|mac|x11|Object|iPod|lastmodify|60|2011|NokiaN|06|toString|9x|getElementsByTagName|delay|getElementsByName|iPhone|toLowerCase|getElementById|ME|author|CE|email|LIU|Wii|browser|system|playstation|engine|found|group|02|2010|universal|gmail|bonjour|organization|com|412|do|KHTML|dows|312|switch|Chrome|100|Version|MSIE|X11|platform|Mac|Firefox|Linux|Konqueror|Gecko|rv|apply|arguments|client|Vista|Array|setTimeout|Windows7|default|XP|2000|userAgent|AppleWebKit'.split('|'),0,{}))
+/**
+ * starfish的基本类
+ *
+ * 命名规范：
+ *         1.以"_"开头的属性或方法为 私有的或局部的
+ *         2.以"$"开头或全部大写的变量为 全局变量
+ *
+ * @namespace org.shen.Starfish
+ * @module Starfish
+ */
+var org;
+if (!org) {
+    org = {};
+} else if (typeof org != "object") {
+    throw new Error("包'org'已经存在,并且不是一个对象!");
+}
 
+if (!org.shen) {
+    org.shen = {};
+} else if (typeof org.shen != "object") {
+    throw new Error("包'org.shen'已经存在,并且不是一个对象!");
+}
+
+if (org.shen.Starfish) {
+    throw new Error("包'org.shen.Starfish'已经存在");
+}
+
+org.shen.Starfish = {
+    author: 'shen LIU',
+    email: 'bonjour.shen@gmail.com',
+    organization: 'shen universal group',
+    found: '2010.02.10',
+    /**
+     *  v.x.y
+     *  v - 主版本(重大改动)
+     *  x - 次版本(增加方法)
+     *  y - 方法有小改动
+     */
+    version: '0.8.60',
+    lastmodify: '2011.06.16'
+};
+
+var starfish = org.shen.Starfish;
+// ----------------------------------------- //
+
+// 改造内置方法
+
+/**
+ * 返回对象的类型    此方法替换typeof 因为Object.toString()返回'[object class]'形式
+ *
+ * @method type
+ * @param {Object}  o   待检验的对象
+ * @return {String}        o的类型
+ */
+var type = function(o) {
+    var _t;
+    return ((_t = typeof(o)) == "object" ? o == null && "null" ||
+        Object.prototype.toString.call(o).slice(8, -1) : _t).toLowerCase();
+};
+
+/**
+ * document.getElementById()
+ *
+ * @method $
+ * @param {String/Object}   _id   元素的id值或元素
+ * @return {Object} 元素
+ */
+var $ = function(_id) {
+    if (typeof(_id) != "object") {
+        return document.getElementById(_id);
+    } else {
+        return _id;
+    }
+};
+
+/**
+ * x.getElementsByTagName()
+ *
+ * @method $$
+ * @param {Object} elem   元素 默认为document
+ * @param {String} name   tag名称
+ * @return {Array}  具有tag名称的元素数组
+ */
+var $$ = function(elem, name) {
+    return (elem || document).getElementsByTagName(name);
+};
+
+/**
+ * x.getElementsByName
+ *
+ * @method $n
+ * @param {Object} elem  元素 默认为document
+ * @param {String} name  元素name属性的值
+ * @return {Array}  具有name属性值的元素数组
+ */
+var $n = function(elem, name) {
+    return (elem || document).getElementsByName(name);
+};
+
+/**
+ * window.setTimeout支持传递Object
+ *
+ * @method delay
+ * @param {Function}     func    要执行的函数
+ * @param {int}         mDelay    时间间隔
+ * @return {Function}  延迟执行的函数
+ */
+var delay = function(func, mDelay) {
+    var st = window.setTimeout;
+    if (type(func) == 'function') {
+        var args = Array.prototype.slice.call(arguments, 2);
+        var f = function() {
+            func.apply(null, args);
+        };
+        return st(f, mDelay);
+    }
+    return st(func, mDelay);
+};
+/**
+ * 测试客户端 引擎 浏览器 平台/设备/OS
+ *
+ * @namespace org.shen.Starfish
+ * @module client
+ */
+starfish.client = function() {
+    //rendering engines
+    var engine = {
+        ie: 0,
+        gecko: 0,
+        webkit: 0,
+        khtml: 0,
+        opera: 0,
+        //complete version
+        ver: null
+    };
+    //browsers
+    var browser = {
+        //browsers
+        ie: 0,
+        firefox: 0,
+        konq: 0,
+        opera: 0,
+        chrome: 0,
+        safari: 0,
+        //specific version
+        ver: null
+    };
+    //platform/device/OS
+    var system = {
+        win: false,
+        mac: false,
+        x11: false,
+        //mobile devices
+        iphone: false,
+        ipod: false,
+        nokiaN: false,
+        winMobile: false,
+        macMobile: false,
+        //game systems
+        wii: false,
+        ps: false
+    };
+    //detect rendering engines/browsers
+    var ua = navigator.userAgent;
+    if (window.opera) {
+        engine.ver = browser.ver = window.opera.version();
+        engine.opera = browser.opera = parseFloat(engine.ver);
+    } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+        engine.ver = RegExp["$1"];
+        engine.webkit = parseFloat(engine.ver);
+        //figure out if it’s Chrome or Safari
+        if (/Chrome\/(\S+)/.test(ua)) {
+            browser.ver = RegExp["$1"];
+            browser.chrome = parseFloat(browser.ver);
+        } else if (/Version\/(\S+)/.test(ua)) {
+            browser.ver = RegExp["$1"];
+            browser.safari = parseFloat(browser.ver);
+        } else {
+            //approximate version
+            var safariVersion = 1;
+            if (engine.webkit < 100) {
+                safariVersion = 1;
+            } else if (engine.webkit < 312) {
+                safariVersion = 1.2;
+            } else if (engine.webkit < 412) {
+                safariVersion = 1.3;
+            } else {
+                safariVersion = 2;
+            }
+            browser.safari = browser.ver = safariVersion;
+        }
+    } else if (/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;]+)/.test(ua)) {
+        engine.ver = browser.ver = RegExp["$1"];
+        engine.khtml = browser.konq = parseFloat(engine.ver);
+    } else if (/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)) {
+        engine.ver = RegExp["$1"];
+        engine.gecko = parseFloat(engine.ver);
+        //determine if it’s Firefox
+        if (/Firefox\/(\S+)/.test(ua)) {
+            browser.ver = RegExp["$1"];
+            browser.firefox = parseFloat(browser.ver);
+        }
+    } else if (/MSIE ([^;]+)/.test(ua)) {
+        engine.ver = browser.ver = RegExp["$1"];
+        engine.ie = browser.ie = parseFloat(engine.ver);
+    }
+    //detect browsers
+    browser.ie = engine.ie;
+    browser.opera = engine.opera;
+    //detect platform
+    var p = navigator.platform;
+    system.win = p.indexOf("Win") == 0;
+    system.mac = p.indexOf("Mac") == 0;
+    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+    //detect windows operating systems
+    if (system.win) {
+        if (/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)) {
+            if (RegExp["$1"] == "NT") {
+                switch (RegExp["$2"]) {
+                    case "5.0":
+                        system.win = "2000";
+                        break;
+                    case "5.1":
+                        system.win = "XP";
+                        break;
+                    case "6.0":
+                        system.win = "Vista";
+                        break;
+                    case "6.1":
+                        system.win = "Windows7";
+                        break;
+                    default:
+                        system.win = "NT";
+                        break;
+                }
+            } else if (RegExp["$1"] == "9x") {
+                system.win = "ME";
+            } else {
+                system.win = RegExp["$1"];
+            }
+        }
+    }
+    //mobile devices
+    system.iphone = ua.indexOf("iPhone") > -1;
+    system.ipod = ua.indexOf("iPod") > -1;
+    system.nokiaN = ua.indexOf("NokiaN") > -1;
+    system.winMobile = (system.win == "CE");
+    system.macMobile = (system.iphone || system.ipod);
+    //gaming systems
+    system.wii = ua.indexOf("Wii") > -1;
+    system.ps = /playstation/i.test(ua);
+    //return it
+    return {
+        engine: engine,
+        browser: browser,
+        system: system
+    };
+}();

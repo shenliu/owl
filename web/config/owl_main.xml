@@ -1,0 +1,13 @@
+<mxEditor>
+	<ui>
+		<add as="graph" element="owl_graph" />
+		<add as="status" element="owl_status" />
+		<add as="toolbar" x="16" y="20" width="50" style="padding:5px;padding-top:8px;padding-right:0px;"/>
+	</ui>
+	<mxGraph as="graph">
+
+	</mxGraph>
+	<mxDefaultToolbar as="toolbar">
+        <include name="config/owl_toolbar.xml"/>
+	</mxDefaultToolbar>
+</mxEditor>
