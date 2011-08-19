@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+#owl_container {
+    overflow: hidden;
+    width: 321px;
+    height: 241px;
+    background: url('../images/grid.gif');
+    cursor: default;
+}
+
+#owl_loading {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
