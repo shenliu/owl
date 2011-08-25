@@ -17,7 +17,7 @@ public class SaveGraphServlet extends HttpServlet {
         String fileName = request.getParameter("file_name");
         String fileType = request.getParameter("file_type");
         String xml = request.getParameter("xml");
-        System.out.println(xml);
+        //System.out.println(xml);
 
         String path = getServletContext().getRealPath("/file");
         File FileDir = new File(path);

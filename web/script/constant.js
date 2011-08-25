@@ -2,6 +2,7 @@ var owl_constant = {
     servlet_path: "./" // servlet路径
     ,theme: "default" // 默认样式
 
+    ,saveFileName: null  // 保存的文件名称
     ,storage: null // 本地存储
     ,collab: null
     ,fileSupport: window.File && window.FileReader && window.FileList // drag and drop
