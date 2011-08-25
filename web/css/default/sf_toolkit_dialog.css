@@ -163,8 +163,8 @@
 
 .sf_dialog_confirm {
     background: none repeat scroll 0 0 #ffffff;
-    text-align: left;
-    margin: 5px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .sf_dialog_confirm_line {

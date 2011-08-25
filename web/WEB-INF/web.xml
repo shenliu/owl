@@ -4,5 +4,19 @@
            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
            version="2.5">
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <description>保存图型</description>
+        <servlet-name>saveGraphServlet</servlet-name>
+        <servlet-class>com.dfjq.pojo.owl.servlet.SaveGraphServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>saveGraphServlet</servlet-name>
+        <url-pattern>/owl/savegraph</url-pattern>
+    </servlet-mapping>
 
 </web-app>

@@ -62,34 +62,6 @@ function owl_beforeMain() {
 
     owl_constant.edgeTemplate = new mxCell();
     owl_constant.edgeTemplate.edge = true;
-    var currentWindow = null;
-
-    function closeCurrentWindow() {
-        if (currentWindow != null) {
-            currentWindow.close();
-            currentWindow = null;
-        }
-    }
-
-    // Counts unnamed open files
-    var counter = 0;
-
-    // Cross-domain window access is not allowed in FF, so if we
-    // were opened from another domain then this will fail.
-    var op = window;
-    try {
-        while (op.opener != null && !isNaN(op.opener.counter)) {
-            op = op.opener;
-        }
-    } catch (e) {
-        // ignore
-    }
-
-    // Checks the counter in the opener if there is one
-    if (op != null && !op.opening) {
-        op.counter++;
-        counter = op.counter;
-    }
 
     // 刷新/退出窗口提示
     web.event.addEvent(window, 'beforeunload', function(e) {
@@ -303,7 +275,8 @@ function owl_main() {
 
     // Ignores enter keystroke. Remove this line if you want the
     // enter keystroke to stop editing
-    keyHandler.enter = function() {};
+    keyHandler.enter = function() {
+    };
 
     keyHandler.bindKey(37, function() {
         nudge(37);
@@ -515,4 +488,36 @@ function owl_afterMain() {
             elem.disabled = false;
         }
     }
+}
+
+function getGraphData() {
+    var enc = new mxCodec(mxUtils.createXmlDocument());
+    var node = enc.encode(owl_constant.graph.getModel());
+    return mxUtils.getXml(node);
+}
+
+function exportImg(_w) {
+    var imgExport = new mxImageExport();
+    var width = 300, height = 200;
+    var scale = parseInt(_w) / width;
+    var bounds = owl_constant.graph.getGraphBounds();
+
+    // New image export
+    var xmlDoc = mxUtils.createXmlDocument();
+    var root = xmlDoc.createElement('output');
+    xmlDoc.appendChild(root);
+    var xmlCanvas = new mxXmlCanvas2D(root);
+
+    // Render graph
+    xmlCanvas.scale(scale);
+    xmlCanvas.translate(-bounds.x, -bounds.y);
+    imgExport.drawState(owl_constant.graph.getView().getState(owl_constant.graph.model.root), xmlCanvas);
+
+    var w = Math.round((bounds.width + 4) * scale);
+    var h = Math.round((bounds.height + 4) * scale);
+
+    var xml = mxUtils.getXml(root);
+
+    alert(xml);
+
 }

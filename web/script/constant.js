@@ -1,5 +1,6 @@
 var owl_constant = {
-    theme: "default" // 默认样式
+    servlet_path: "./" // servlet路径
+    ,theme: "default" // 默认样式
 
     ,storage: null // 本地存储
     ,collab: null

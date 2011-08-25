@@ -86,7 +86,7 @@ starfish.toolkit.dialog = function() {
             html.push('<div class="sf_dialog_confirm_icon" style="background:url(' + img + ') no-repeat ' + (w / 4) + 'px center;">' + caution + '</div>');
             html.push('<div class="sf_dialog_confirm" style="width:' + (w - 20) + 'px;height:' + (h - 75) + 'px">');
             html.push('  <div class="sf_dialog_confirm_line" style="height:' + (h - 155) + 'px">');
-            html.push('    <span style="line-height:' + (h - 155) + 'px">' + tips + '</span>');
+            html.push(tips);
             html.push('  </div>');
             html.push('  <div class="sf_dialog_confirm_line" style="height:30px;">');
             html.push('    <input type="button" class="sf_dialog_confirm_ok" value="' + ok + '" />');

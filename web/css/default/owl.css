@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import "toolbar.css";
+@import "editor.css";
 
 /* 绘图区 */
 #owl_graph {

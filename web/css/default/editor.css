@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+div.owl_form {
+    width: 100%;
+    font-size: 11pt;
+    font-family: Verdana,Simsun,sans-serif;
+}
+
+div.owl_form div {
+    margin-bottom: 15px;
+}
+
+div.fileNameEmpty span {
+    font-size: 9pt;
+}
+
+span.owl_form_title {
+    width: 70px;
+    margin-right: 20px;
+}
