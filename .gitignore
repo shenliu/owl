@@ -6,3 +6,7 @@ web/WEB-INF/classes/
 web/mxGraph/images/
 web/script/3rdParty/compile/
 web/test/
+web/images/graph
+web/images/workflow
+web/css/default/images
+web/css/default/toolbar

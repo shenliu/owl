@@ -1,0 +1,195 @@
+@charset "utf-8";
+
+/* 对话框 悬浮框 */
+.sf_dialog {
+    border-radius: 5px;
+    box-shadow: 5px 2px 6px #999;
+
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    border: 0 none;
+    z-index: 2000;
+    overflow: hidden;
+    height: auto;
+}
+
+.sf_dialog_outer {
+    background: none repeat scroll 0 0 transparent;
+    height: 100%;
+    padding: 5px 5px 5px 5px;
+    position: relative;
+}
+
+.sf_dialog_inner {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.sf_dialog_content {
+    background-color: #ffffff;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    font-family: Verdana,Simsun,sans-serif;
+}
+
+.sf_dialog_close {
+    position: absolute;
+    top: -13px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: url(images/sf_dialog_close.png) no-repeat;
+}
+
+.sf_dialog_close:hover {
+    background-position: 0 -30px;
+}
+
+.sf_dialog_panel_container {
+    border: 0 none;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.sf_dialog_panel {
+    border: 0 none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    height: 100%;
+    overflow: visible;
+}
+
+.sf_dialog_panel_center {
+    background: url("images/sf_dialog_panel.png") repeat scroll left top transparent;
+    height: 100%;
+    width: 100%;
+}
+
+.sf_dialog_panel_t {
+    background: url("images/sf_dialog_x.png") repeat-x scroll 0 -125px transparent;
+    height: 5px;
+    left: 0;
+    overflow: hidden;
+    top: -5px;
+    width: 100%;
+}
+
+.sf_dialog_panel_rt {
+    background: url("images/sf_dialog_buttons.png") no-repeat scroll -50px -5px transparent;
+    height: 5px;
+    overflow: hidden;
+    right: -5px;
+    top: -5px;
+    width: 5px;
+}
+
+.sf_dialog_panel_r {
+    background: url("images/sf_dialog_y.png") repeat-y scroll -50px 0 transparent;
+    height: 100%;
+    overflow: hidden;
+    right: -5px;
+    width: 5px;
+}
+
+.sf_dialog_panel_rb {
+    background: url("images/sf_dialog_buttons.png") no-repeat scroll -50px -10px transparent;
+    bottom: -5px;
+    height: 5px;
+    overflow: hidden;
+    right: -5px;
+    width: 5px;
+}
+
+.sf_dialog_panel_b {
+    background: url("images/sf_dialog_x.png") repeat-x scroll 0 -130px transparent;
+    bottom: -5px;
+    height: 5px;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.sf_dialog_panel_lb {
+    background: url("images/sf_dialog_buttons.png") no-repeat scroll -45px -10px transparent;
+    bottom: -5px;
+    height: 5px;
+    left: -5px;
+    overflow: hidden;
+    width: 5px;
+}
+
+.sf_dialog_panel_l {
+    background: url("images/sf_dialog_y.png") repeat-y scroll -45px 0 transparent;
+    height: 100%;
+    left: -5px;
+    overflow: hidden;
+    width: 5px;
+}
+
+.sf_dialog_panel_lt {
+    background: url("images/sf_dialog_buttons.png") no-repeat scroll -45px -5px transparent;
+    height: 5px;
+    left: -5px;
+    overflow: hidden;
+    top: -5px;
+    width: 5px;
+}
+
+/********************************************/
+
+/* 创建 确认 对话框 */
+.sf_dialog_confirm_icon {
+    height: 64px;
+    line-height: 64px;
+    width: 100%;
+    text-indent: 3em;
+    font: normal normal bold 20px/64px \5FAE\8F6F\96C5\9ED1, \4EFF\5B8B;
+    letter-spacing: 5px;
+    margin-top: 10px;
+}
+
+.sf_dialog_confirm {
+    background: none repeat scroll 0 0 #ffffff;
+    text-align: left;
+    margin: 5px;
+}
+
+.sf_dialog_confirm_line {
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    line-height: 100%;
+}
+
+.sf_dialog_confirm span {
+    display: inline-block;
+    font-size: 11.5pt;
+}
+
+.sf_dialog_confirm_ok, .sf_dialog_confirm_cancel {
+    border: 1px solid #c4c4c4;
+    color: #666666;
+    padding: 3px 15px;
+}
+
+.sf_dialog_confirm_ok:hover, .sf_dialog_confirm_cancel:hover {
+    background-color: #999999;
+    color: #fff;
+}
+
+.sf_dialog_confirm_cancel {
+
+}

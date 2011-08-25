@@ -1,3 +1,10 @@
+// 读取资源文件
+function i18n(key) {
+    return mxResources.get(key);
+}
+
+////////////////////////////////////////////////////
+
 function Log(s) {
     if (window.console) {
         console.log(s);

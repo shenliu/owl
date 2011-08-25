@@ -1,0 +1,13 @@
+#overlay {
+    background: #ddd;
+    opacity: 0.5;
+    filter: alpha(style = 3, opacity = 0, finishOpacity = 50);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    cursor: pointer;
+}

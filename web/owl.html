@@ -1,31 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta http-equiv="pragma" content="no-cache" />
-		<meta http-equiv="cache-control" content="no-cache" />
-		<meta http-equiv="expires" content="0" />
-		<meta name="robots" content="all" />
-		<meta name="author" content="bonjour.shen@gmail.com, shen" />
+        <!--meta http-equiv="X-UA-Compatible" content="IE=5,IE=9"/-->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="expires" content="0"/>
+		<meta name="robots" content="all"/>
+		<meta name="author" content="bonjour.shen@gmail.com, shen"/>
 
         <title>工作流</title>
-        <link rel="stylesheet" media="all" type="text/css" href="css/common.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="css/owl.css" />
+        <link rel="stylesheet" media="all" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" media="all" type="text/css" href="css/default/owl.css"/>
+        <link rel="stylesheet" media="all" type="text/css" href="css/sf_toolkit_overlay.css"/>
+        <link rel="stylesheet" media="all" type="text/css" href="css/default/sf_toolkit_dialog.css"/>
 
         <script type="text/javascript" src="script/sf/starfish_only.js"></script>
+        <script type="text/javascript" src="script/sf/starfish_core.js"></script>
         <script type="text/javascript" src="script/sf/starfish_web.js"></script>
-
-        <script type="text/javascript" src="script/owl.js"></script>
-        <script type="text/javascript" src="script/utils.js"></script>
+        <script type="text/javascript" src="script/sf/sf_web_fx.js"></script>
+        <script type="text/javascript" src="script/sf/sf_toolkit.js"></script>
+        <script type="text/javascript" src="script/sf/sf_toolkit_dialog.js"></script>
+        <script type="text/javascript" src="script/sf/sf_toolkit_overlay.js"></script>
 
         <script type="text/javascript">
             var mxBasePath = './mxGraph';
         </script>
 
         <script type="text/javascript" src="script/3rdParty/mxClient-1.7.1.6.js"></script>
+        <script type="text/javascript" src="script/owl.js"></script>
+        <script type="text/javascript" src="script/toolbar.js"></script>
+        <script type="text/javascript" src="script/event.js"></script>
+        <script type="text/javascript" src="script/utils.js"></script>
+        <script type="text/javascript" src="script/constant.js"></script>
+        <script type="text/javascript" src="script/shape.js"></script>
     </head>
     <body>
+        <div id="owl_menu"></div>
         <div id="owl_graph" class="owl_base"></div>
         <div id="owl_status" class="owl_base a_right"></div>
         <div id="owl_loading">
