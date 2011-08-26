@@ -15,6 +15,46 @@ function owl_add_event() {
         });
     });
 
+    // 打开
+    _add(_get("tb_open"), function() {
+        var html = [];
+        html.push("<div class='owl_form'>");
+        html.push("<div>");
+        html.push("    <span class='owl_form_title a_right'>" + i18n("edit_openFile") + "</span>");
+        html.push("    <span class='a_center'><input type='file' class='openFile' /></span>");
+        html.push("</div>");
+        html.push("<div>");
+        html.push("    <span class='owl_form_title a_right'>" + i18n("edit_xmlDoc") + "</span>");
+        html.push("    <span class='a_center'>");
+        html.push("        <textarea class='pasteXml' rows='10' cols='40'></textarea>");
+        html.push("    </span>");
+        html.push("</div>");
+        html.push("<div>");
+        html.push("    <button type='button' value=''>" + i18n("edit_loadXML") + "</button>");
+        html.push("</div>");
+        html.push("</div>");
+
+        dialog(500, 450, html.join(""), "css/default/images/open.png", i18n("tb_open"), function() {
+            var graphName = web.className("graphName")[0];
+            var graphType = web.className("graphType")[0];
+            var fileNameEmpty = web.className("fileNameEmpty")[0];
+            if (graphName.value.trim() === "") {
+                web.removeClass(fileNameEmpty, "hidden");
+                return false;
+            }
+
+            var fileName = graphName.value.trim();
+            var fileType = graphType.options[graphType.selectedIndex].value;
+            if (fileType === "xml") {
+                _save(fileName);
+                owl_constant.saveFileName = fileName;
+            } else {  // 输出图片格式
+                exportImg(400);
+            }
+            return true;
+        });
+    });
+
     // 保存
     _add(_get("tb_save"), function() {
         if (owl_constant.saveFileName) {
@@ -85,6 +125,8 @@ function owl_add_event() {
         web.event.addEvent(elem, 'click', func);
     }
 
+    ////////////////////////////
+
     /**
      * 提示框
      * @param w   width
@@ -127,18 +169,19 @@ function owl_add_event() {
         }
     }
 
+    // 另存为
     function _saveAs() {
         var bounds = owl_constant.graph.getGraphBounds();
         if (bounds.width == 0 && bounds.height == 0) {
             mxUtils.alert(i18n('edit_drawingEmpty'));
-            return false;
+            return;
         }
 
         var html = [];
         html.push("<div class='owl_form'>");
         html.push("<div>");
         html.push("    <span class='owl_form_title a_right'>" + i18n("edit_fileName") + "</span>");
-        html.push("    <span class='a_center'><input class='graphName' value='graph' onfocus='owl_etc_hideRequired();'></span>");
+        html.push("    <span class='a_center'><input class='graphName' value='graph' onfocus='owl_etc_hideRequired();' /></span>");
         html.push("</div>");
         html.push("<div class='hidden fileNameEmpty required'>");
         html.push("    <span>" + i18n("edit_fileNameEmpty") + "</span>");
@@ -172,12 +215,12 @@ function owl_add_event() {
             } else {  // 输出图片格式
                 exportImg(400);
             }
-
             return true;
         });
 
     }
 
+    // 直接存储文件
     function _save(fileName) {
         var url = owl_constant.servlet_path + "owl/savegraph";
         var params = {
@@ -200,12 +243,12 @@ function owl_add_event() {
         for (var o in params) {
             if (params.hasOwnProperty(o)) {
                 var value = params[o];
-                var textarea = doc.createElement('textarea');
+                var textarea = web.dom.elem('textarea');
                 textarea.setAttribute('name', o);
                 value = value.replace(/\n/g, '&#xa;');
-                var content = doc.createTextNode(value);
-                textarea.appendChild(content);
-                form.appendChild(textarea);
+                var content = web.dom.addText(value);
+                web.dom.insert(textarea, content);
+                web.dom.insert(form, textarea);
             }
         }
         doc.body.appendChild(form);
@@ -217,6 +260,9 @@ function owl_add_event() {
     }
 }
 
+/**
+ * 隐藏'文件名不能为空'的提示
+ */
 function owl_etc_hideRequired() {
     var web = starfish.web;
     var fileNameEmpty = web.className("fileNameEmpty")[0];
