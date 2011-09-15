@@ -10,13 +10,14 @@ starfish.toolkit.overlay = {
     /**
      * @method init
      */
-    init: function() {
-        var overlay = document.createElement("div");
+    init: function(isParent) {
+        var doc = isParent ? parent.document : document;
+        var overlay = doc.createElement("div");
         overlay.id = "overlay";
-
-        starfish.web.event.addEvent(window, "resize", starfish.toolkit.overlay.resize);
-
-        document.body.appendChild(overlay);
+        starfish.web.event.addEvent(window, "resize", function() {
+            starfish.toolkit.overlay.resize(isParent);
+        });
+        doc.body.appendChild(overlay);
     },
 
     /**
@@ -24,8 +25,8 @@ starfish.toolkit.overlay = {
      *
      * @method hide
      */
-    hide: function() {
-        starfish.web.hide($("overlay"));
+    hide: function(isParent) {
+        starfish.web.hide($("overlay", isParent));
     },
 
     /**
@@ -38,22 +39,24 @@ starfish.toolkit.overlay = {
      *          end        // 最终透明度
      *      }
      */
-    show: function(options) {
+    show: function(options, isParent) {
         var w = starfish.web;
-        var overlay = $("overlay");
+        var overlay = $("overlay", isParent);
 
         if (!overlay) {
-            starfish.toolkit.overlay.init();
-            overlay = $("overlay");
+            starfish.toolkit.overlay.init(isParent);
+            overlay = $("overlay", isParent);
         }
 
-        if (options && options.clickHide) {
+        if (options && options['clickHide']) {
             // 点击div该层隐藏
-            starfish.web.event.addEvent(overlay, "click", starfish.toolkit.overlay.hide);
+            starfish.web.event.addEvent(overlay, "click", function() {
+                starfish.toolkit.overlay.hide(isParent);
+            });
         }
 
-        w.css(overlay, "width", w.window.docWidth() + "px");
-        w.css(overlay, "height", w.window.docHeight() + "px");
+        w.css(overlay, "width", w.window.docWidth(isParent) + "px");
+        w.css(overlay, "height", w.window.docHeight(isParent) + "px");
 
         w.fx.fade(overlay, {
             begin: 0,
@@ -62,11 +65,11 @@ starfish.toolkit.overlay = {
         });
     },
 
-    resize: function() {
+    resize: function(isParent) {
         var w = starfish.web;
-        var overlay = $("overlay");
-        w.css(overlay, "width", w.window.docWidth() + "px");
-        w.css(overlay, "height", w.window.docHeight() + "px");
+        var overlay = $("overlay", isParent);
+        w.css(overlay, "width", w.window.docWidth(isParent) + "px");
+        w.css(overlay, "height", w.window.docHeight(isParent) + "px");
     }
 
 };

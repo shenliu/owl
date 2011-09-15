@@ -696,8 +696,9 @@ starfish.web.dom = {
      * @param {String}  lab  元素类型字符串
      * @return {Element}  创建的元素
      */
-    elem: function(lab) {
-        return document.createElement(lab);
+    elem: function(lab, isParent) {
+        return isParent ? parent.document.createElement(lab)
+                : document.createElement(lab);
     },
 
     /**
@@ -1198,9 +1199,10 @@ starfish.web.window = {
      * @method docWidth
      * @return {int}  宽度
      */
-    docWidth: function() {
-        var de = document.documentElement;
-        return (de && de.scrollWidth) || document.body.scrollWidth;
+    docWidth: function(isParent) {
+        var doc = isParent ? parent.document : document;
+        var de = doc.documentElement;
+        return (de && de.scrollWidth) || doc.body.scrollWidth;
         //return document.documentElement.clientWidth || document.body.clientWidth;
     },
 
@@ -1210,9 +1212,10 @@ starfish.web.window = {
      * @method docHeight
      * @return {int}  高度
      */
-    docHeight: function() {
-        var de = document.documentElement;
-        return (de && de.scrollHeight) || document.body.scrollHeight;
+    docHeight: function(isParent) {
+        var doc = isParent ? parent.document : document;
+        var de = doc.documentElement;
+        return (de && de.scrollHeight) || doc.body.scrollHeight;
         //return document.documentElement.clientHeight || document.body.clientHeight;
     },
 

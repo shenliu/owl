@@ -9,8 +9,8 @@ starfish.toolkit.dialog = function() {
          *              closeFunc // 关闭时要执行的方法
          *        }
          */
-        frame: function(options) {
-            var border = web.dom.elem("div");
+        frame: function(options, isParent) {
+            var border = web.dom.elem("div", isParent);
             border.className = "sf_dialog";
             if (options) {
                 if (options.left) web.css(border, 'left', parseInt(options.left) + 'px');
@@ -19,10 +19,10 @@ starfish.toolkit.dialog = function() {
                 if (options.height) web.css(border, 'height', parseInt(options.height) + 'px');
                 if (options.border) web.css(border, 'border', options.border);
             }
-            var outer = web.dom.elem("div");
+            var outer = web.dom.elem("div", isParent);
             outer.className = "sf_dialog_outer";
 
-            var inner = web.dom.elem("div");
+            var inner = web.dom.elem("div", isParent);
             inner.className = "sf_dialog_inner";
 
             var html = [];
@@ -39,25 +39,23 @@ starfish.toolkit.dialog = function() {
             html.push('</div>');
             inner.innerHTML = html.join("");
 
-            var content = web.dom.elem("div");
+            var content = web.dom.elem("div", isParent);
             content.className = "sf_dialog_content";
 
             web.dom.insert(inner, content);
             web.dom.insert(outer, inner);
             web.dom.insert(border, outer);
-            web.dom.insert(document.body, border);
+            var doc = isParent ? parent.document : document;
+            web.dom.insert(doc.body, border);
 
             // 有关闭按钮
             if (options && options['closeable']) {
-                var close = web.dom.elem('div');
+                var close = web.dom.elem('div', isParent);
                 close.className = 'sf_dialog_close';
                 web.dom.insert(border, close);
                 close.title = "关闭";
                 web.event.addEvent(close, 'click', function() {
-                    web.dom.dispose(border);
-                    if (options['closeFunc']) {
-                        options['closeFunc']();
-                    }
+                    starfish.toolkit.dialog.cancel(isParent);
                 });
             }
 
@@ -66,6 +64,36 @@ starfish.toolkit.dialog = function() {
             web.css(inner, 'height', (h - 10) + 'px');
             web.css(content, 'height', (h - 10) + 'px');
             return border;
+        },
+
+        /**
+         * 添加 对话框标题、图片
+         * @param  {Object} options {
+         *              width， height, caution
+         *              img // 显示的图片
+         *          }
+         */
+        caption: function(options) {
+            var w = options.width, h = options.height;
+            var caution = options['caution'] || "注意",
+                img = options['img'] || "css/default/images/sf_dialog_warning.png";
+            var html = [];
+            html.push('<div class="sf_dialog_caption" style="background:url(' + img + ') no-repeat ' + (w / 4) + 'px center;">' + caution + '</div>');
+            var sf_dialog_content = web.className("sf_dialog_content")[0];
+            sf_dialog_content.innerHTML = html.join("");
+        },
+
+        /**
+         * 内容
+         * @param tips
+         * @param options
+         */
+        content: function(tips, options) {
+            var w = options.width, h = options.height;
+            var html = [];
+            html.push(tips);
+            var sf_dialog_content = web.className("sf_dialog_content")[0];
+            sf_dialog_content.innerHTML += html.join("");
         },
 
         /**
@@ -99,33 +127,29 @@ starfish.toolkit.dialog = function() {
         /**
          * 显示框架
          * @param options {
-         *            overlay,  overlayEnd,
          *            width, height,
          *            closeable,  closeFunc // 关闭时要执行的方法
          *            border
          *        }
          */
-        show: function(options) {
-            if (options['overlay']) {
-                starfish.toolkit.overlay.show({
-                    end: options['overlayEnd'] || 50
-                });
-            }
+        show: function(options, isParent) {
             var width = options['width'], height = options['height'];
             return starfish.toolkit.dialog.frame({
-                left: (web.window.docWidth() - width) / 2,
-                top: (web.window.docHeight() - height) / 2,
+                left: (web.window.docWidth(isParent) - width) / 2,
+                top: (web.window.docHeight(isParent) - height) / 2,
                 width: width,
                 height: height,
                 closeable: options['closeable'],
-                closeFunc: options['closeFunc'] ? function() {
-                    options['closeFunc']();
-                    if (options['overlay']) {
-                        starfish.toolkit.overlay.hide();
-                    }
-                } : options['overlay'] ? starfish.toolkit.overlay.hide : null,
                 border: options['border'] || '1px solid #999'
-            });
+            }, isParent);
+        },
+
+        cancel: function(isParent) {
+            var sf_dialog = web.className('sf_dialog')[0];
+            web.dom.dispose(sf_dialog);
+            if ($("overlay", isParent)) {
+                starfish.toolkit.overlay.hide(isParent);
+            }
         }
     }
 }();

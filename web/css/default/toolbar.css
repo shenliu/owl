@@ -59,7 +59,6 @@ div.owl_menu_container {
     z-index: 300;
     background-color: #e4eef9;
     width: 100%;
-    height: 80px;
     border: 1px solid #8db2e3;
     padding: 2px;
 
@@ -123,7 +122,7 @@ div.owl_menu_box div.owl_box_title {
     margin: 0;
     outline: 0 none;
     overflow: hidden;
-    text-indent: 999em;
+    text-indent: -9999em;
     text-indent: 0\9;
     font-size: 0\9;
 }

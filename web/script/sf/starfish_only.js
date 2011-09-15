@@ -65,8 +65,11 @@ var type = function(o) {
  * @param {String/Object}   _id   元素的id值或元素
  * @return {Object} 元素
  */
-var $ = function(_id) {
+var $ = function(_id, isParent) {
     if (typeof(_id) != "object") {
+        if (isParent) {
+            return parent.document.getElementById(_id);
+        }
         return document.getElementById(_id);
     } else {
         return _id;

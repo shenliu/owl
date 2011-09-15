@@ -8,6 +8,11 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- apache fileUpload cleanup -->
+    <listener>
+        <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+    </listener>
+
     <servlet>
         <description>保存图型</description>
         <servlet-name>saveGraphServlet</servlet-name>
@@ -17,6 +22,17 @@
     <servlet-mapping>
         <servlet-name>saveGraphServlet</servlet-name>
         <url-pattern>/owl/savegraph</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>上传</description>
+        <servlet-name>upLoadServlet</servlet-name>
+        <servlet-class>com.dfjq.pojo.owl.servlet.UpLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>upLoadServlet</servlet-name>
+        <url-pattern>/owl/upload</url-pattern>
     </servlet-mapping>
 
 </web-app>

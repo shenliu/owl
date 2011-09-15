@@ -30,6 +30,7 @@ function owl_toolbar() {
     // 容器
     var container = web.dom.elem("div");
     container.className = "owl_menu_container";
+    web.css(container, "height", "80px");
 
     // 文件 子菜单
     var div_file = web.dom.elem("div");
@@ -51,44 +52,22 @@ function owl_toolbar() {
         (function() {
             var li = lis[i];
 
-            web.event.addEvent(li, "mouseover", function() {
-                if (!web.hasClass(li, "current_menu")) {
-                    web.addClass(li, "hover_menu");
-                }
+            web.event.addEvent(li, "mouseover", function(e) {
+                mouseOver(e);
             });
 
-            web.event.addEvent(li, "mouseout", function() {
-                web.removeClass(li, "hover_menu");
+            web.event.addEvent(li, "mouseout", function(e) {
+                mouseOut(e);
             });
 
-            web.event.addEvent(li, "click", function() {
-                if (web.hasClass(li, "current_menu")) {
-                    return;
-                }
-                for (var k = 0; k < lis.length; k++) {
-                    web.removeClass(lis[k], "current_menu");
-                }
-                web.addClass(li, "current_menu");
-
-                for (var j = 0; j < container.childNodes.length; j++) {
-                    var c = container.childNodes[j];
-                    web.addClass(c, "hidden");
-                }
-                var type = li.getAttribute("type");
-                var div = $("menu_" + type);
-                web.removeClass(div, "hidden");
+            web.event.addEvent(li, "click", function(e) {
+                mouseClick(e);
             });
         })();
     }
 
     // 初始时 触发'文件'
-    if (lis[0].click) {
-        lis[0].click();
-    } else {  // chrome
-        var evt = document.createEvent("MouseEvents");
-        evt.initEvent("click", true, true);
-        lis[0].dispatchEvent(evt);
-    }
+    fireClick(lis[0]);
 
     owl_toolbar_file();
     owl_toolbar_graph();

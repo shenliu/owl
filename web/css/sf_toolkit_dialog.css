@@ -10,7 +10,6 @@
     position: absolute;
     border: 0 none;
     z-index: 2000;
-    overflow: hidden;
     height: auto;
 }
 
@@ -43,7 +42,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background: url(images/sf_dialog_close.png) no-repeat;
+    background: url(default/images/sf_dialog_close.png) no-repeat;
 }
 
 .sf_dialog_close:hover {
@@ -73,13 +72,13 @@
 }
 
 .sf_dialog_panel_center {
-    background: url("images/sf_dialog_panel.png") repeat scroll left top transparent;
+    background: url("default/images/sf_dialog_panel.png") repeat scroll left top transparent;
     height: 100%;
     width: 100%;
 }
 
 .sf_dialog_panel_t {
-    background: url("images/sf_dialog_x.png") repeat-x scroll 0 -125px transparent;
+    background: url("default/images/sf_dialog_x.png") repeat-x scroll 0 -125px transparent;
     height: 5px;
     left: 0;
     overflow: hidden;
@@ -88,7 +87,7 @@
 }
 
 .sf_dialog_panel_rt {
-    background: url("images/sf_dialog_buttons.png") no-repeat scroll -50px -5px transparent;
+    background: url("default/images/sf_dialog_buttons.png") no-repeat scroll -50px -5px transparent;
     height: 5px;
     overflow: hidden;
     right: -5px;
@@ -97,7 +96,7 @@
 }
 
 .sf_dialog_panel_r {
-    background: url("images/sf_dialog_y.png") repeat-y scroll -50px 0 transparent;
+    background: url("default/images/sf_dialog_y.png") repeat-y scroll -50px 0 transparent;
     height: 100%;
     overflow: hidden;
     right: -5px;
@@ -105,7 +104,7 @@
 }
 
 .sf_dialog_panel_rb {
-    background: url("images/sf_dialog_buttons.png") no-repeat scroll -50px -10px transparent;
+    background: url("default/images/sf_dialog_buttons.png") no-repeat scroll -50px -10px transparent;
     bottom: -5px;
     height: 5px;
     overflow: hidden;
@@ -114,7 +113,7 @@
 }
 
 .sf_dialog_panel_b {
-    background: url("images/sf_dialog_x.png") repeat-x scroll 0 -130px transparent;
+    background: url("default/images/sf_dialog_x.png") repeat-x scroll 0 -130px transparent;
     bottom: -5px;
     height: 5px;
     left: 0;
@@ -123,7 +122,7 @@
 }
 
 .sf_dialog_panel_lb {
-    background: url("images/sf_dialog_buttons.png") no-repeat scroll -45px -10px transparent;
+    background: url("default/images/sf_dialog_buttons.png") no-repeat scroll -45px -10px transparent;
     bottom: -5px;
     height: 5px;
     left: -5px;
@@ -132,7 +131,7 @@
 }
 
 .sf_dialog_panel_l {
-    background: url("images/sf_dialog_y.png") repeat-y scroll -45px 0 transparent;
+    background: url("default/images/sf_dialog_y.png") repeat-y scroll -45px 0 transparent;
     height: 100%;
     left: -5px;
     overflow: hidden;
@@ -140,7 +139,7 @@
 }
 
 .sf_dialog_panel_lt {
-    background: url("images/sf_dialog_buttons.png") no-repeat scroll -45px -5px transparent;
+    background: url("default/images/sf_dialog_buttons.png") no-repeat scroll -45px -5px transparent;
     height: 5px;
     left: -5px;
     overflow: hidden;
@@ -151,14 +150,14 @@
 /********************************************/
 
 /* 创建 确认 对话框 */
-.sf_dialog_confirm_icon {
+.sf_dialog_caption {
     height: 64px;
     line-height: 64px;
     width: 100%;
     text-indent: 3em;
     font: normal normal bold 20px/64px \5FAE\8F6F\96C5\9ED1, \4EFF\5B8B;
     letter-spacing: 5px;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .sf_dialog_confirm {

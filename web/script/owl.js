@@ -1,6 +1,7 @@
 starfish.web.dom.domReady(function() {
     var web = starfish.web;
 
+    mxResources.add('mxGraph/resources/common');
     mxResources.add('mxGraph/resources/editor');
     mxResources.add('mxGraph/resources/graph');
     mxResources.add('mxGraph/resources/toolbar');
@@ -494,6 +495,19 @@ function getGraphData() {
     var enc = new mxCodec(mxUtils.createXmlDocument());
     var node = enc.encode(owl_constant.graph.getModel());
     return mxUtils.getXml(node);
+}
+
+function setGraphData(filename) {
+    mxUtils.get(filename, function(req) {
+        var root = req.getDocumentElement();
+        var dec = new mxCodec(root.ownerDocument);
+        dec.decode(root, owl_constant.graph.getModel());
+        try {
+            starfish.toolkit.dialog.cancel();
+        } catch(e) {
+            // ~~
+        }
+    });
 }
 
 function exportImg(_w) {
